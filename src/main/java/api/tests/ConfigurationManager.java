@@ -8,7 +8,7 @@ public interface ConfigurationManager {
 
     Configuration configuration = ConfigCache.getOrCreate(Configuration.class);
 
-    public static RequestSpecification set ()
+    static RequestSpecification set ()
     {
         return new RequestSpecBuilder().
                 build();

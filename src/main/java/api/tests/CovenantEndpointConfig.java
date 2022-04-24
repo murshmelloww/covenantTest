@@ -1,22 +1,32 @@
 package api.tests;
 
-import api.tests.models.request.LoginBody;
-import io.restassured.builder.RequestSpecBuilder;
-import io.restassured.http.ContentType;
+import api.tests.models.request.listener.HttpListenerBody;
+import api.tests.models.request.login.LoginBody;
 import io.restassured.response.ValidatableResponse;
-import io.restassured.specification.RequestSpecification;
 
 import static io.restassured.RestAssured.given;
 
 public class CovenantEndpointConfig extends CovenantEndpointSpec {
 
-    public static ValidatableResponse create (LoginBody body) {
+    public static ValidatableResponse createLogin(LoginBody body) {
 
         return given()
                 .spec(set())
                 .body(body)
                 .when()
-                .post()
+                .post("/users/login")
+                .then();
+
+    }
+
+    public static ValidatableResponse createListener (HttpListenerBody body, String token) {
+
+        return given()
+                .spec(set())
+                .body(body)
+                .header("Authorization","Bearer " + token)
+                .when()
+                .post("listeners/http")
                 .then();
 
     }

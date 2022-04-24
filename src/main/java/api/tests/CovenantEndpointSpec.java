@@ -10,10 +10,11 @@ public class CovenantEndpointSpec implements ConfigurationManager {
         return new RequestSpecBuilder().
                 setBaseUri(configuration.url()).
                 setBasePath(configuration.path()).
+                setPort(configuration.port()).
                 setContentType(ContentType.JSON).
                 build().
-                given().
-                auth().preemptive().basic(configuration.username(), configuration.password());
+                log().all().
+                given();
 
     }
 }

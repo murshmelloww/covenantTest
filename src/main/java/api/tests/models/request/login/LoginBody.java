@@ -1,4 +1,4 @@
-package api.tests.models.request;
+package api.tests.models.request.login;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;

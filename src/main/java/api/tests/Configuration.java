@@ -13,13 +13,12 @@ public interface Configuration extends Config {
 
     @Key("api.path")
     String path();
-
     @Key("api.url")
     String url();
-
+    @Key("api.port")
+    Integer port();
     @Key("password")
     String password();
-
     @Key("username")
     String username();
 }
