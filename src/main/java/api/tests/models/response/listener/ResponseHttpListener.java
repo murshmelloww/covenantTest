@@ -10,7 +10,7 @@ import lombok.Value;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-@Builder
+
 public class ResponseHttpListener{
 	@JsonProperty("bindPort")
 	int bindPort;
@@ -54,4 +54,8 @@ public class ResponseHttpListener{
 	List<String> connectAddresses;
 	@JsonProperty("status")
 	String status;
+
+	public ResponseHttpListener() {
+		super();
+	}
 }

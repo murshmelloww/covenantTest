@@ -4,6 +4,10 @@ import api.tests.models.request.listener.HttpListenerBody;
 import api.tests.models.request.login.LoginBody;
 import api.tests.models.response.listener.ResponseHttpListener;
 import api.tests.models.response.login.ResponseLogin;
+import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.http.ContentType;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -13,6 +17,7 @@ import utils.testhelpers.TestHelper;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
+import static io.restassured.RestAssured.given;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -30,13 +35,18 @@ public class LoginTest extends TestHelper {
 
     @Test
     public  void loginTest () throws InterruptedException {
-        LoginBody loginBody = LoginBody.getInstance("admin", "123");
+
         ResponseLogin responseLogin = CreatePost.code200(
-                loginBody
+                LoginBody.getInstance("admin", "123")
         );
-        TimeUnit.SECONDS.sleep(20);
-        assertEquals(true, responseLogin.isSuccess());
+        assertEquals(true, responseLogin.getSuccess());
         token = responseLogin.getCovenantToken();
+
+        HttpListenerBody httpListenerBody = HttpListenerBody.getInstance();
+
+        ResponseHttpListener responseHttpListener =
+                CreatePost.code200(httpListenerBody, token);
+
     }
 
     @Test

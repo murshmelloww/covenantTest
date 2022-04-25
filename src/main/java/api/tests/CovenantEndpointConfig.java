@@ -15,7 +15,9 @@ public class CovenantEndpointConfig extends CovenantEndpointSpec {
                 .body(body)
                 .when()
                 .post("/users/login")
-                .then();
+                .then()
+                .contentType("application/json; charset=utf-8")
+                .log().all();
 
     }
 
