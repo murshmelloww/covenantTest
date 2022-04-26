@@ -3,6 +3,7 @@ package api.tests;
 import api.tests.models.request.listener.HttpListenerBody;
 import api.tests.models.request.login.LoginBody;
 import io.restassured.response.ValidatableResponse;
+import org.assertj.core.api.Java6StandardSoftAssertionsProvider;
 
 import static io.restassured.RestAssured.given;
 
@@ -31,5 +32,23 @@ public class CovenantEndpointConfig extends CovenantEndpointSpec {
                 .post("listeners/http")
                 .then();
 
+    }
+
+    public static ValidatableResponse createLauncher(String token) {
+        return given()
+                .spec(set())
+                .header("Authorization","Bearer " + token)
+                .when()
+                .post("launchers/binary")
+                .then();
+    }
+
+    public static ValidatableResponse getLauncher(String token) {
+        return given()
+                .spec(set())
+                .header("Authorization","Bearer " + token)
+                .when()
+                .get("launchers/binary")
+                .then();
     }
 }

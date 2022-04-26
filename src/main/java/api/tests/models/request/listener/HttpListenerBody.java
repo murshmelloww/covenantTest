@@ -5,6 +5,7 @@ import java.util.List;
 import api.tests.models.request.login.LoginBody;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonTypeId;
 import lombok.Builder;
 import lombok.Data;
 
@@ -44,6 +45,7 @@ public class HttpListenerBody{
 	@JsonProperty("startTime")
 	private String startTime;
 	@JsonProperty("id")
+	@JsonTypeId
 	private int id;
 	@JsonProperty("connectAddresses")
 	private List<String> connectAddresses;
@@ -55,7 +57,7 @@ public class HttpListenerBody{
 		return HttpListenerBody.builder()
 				.useSSL(false)
 				.urls(List.of("http://192.168.1.69:80"))
-				.id(6)
+				.id(builder().id)
 				.name("testName")
 				.guid("fdvzdvsdv")
 				.description("testDescription")

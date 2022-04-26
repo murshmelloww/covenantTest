@@ -10,7 +10,6 @@ import lombok.Value;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-@Builder
 public class Profile{
 	@JsonProperty("httpRequestHeaders")
 	List<HttpRequestHeadersItem> httpRequestHeaders;
@@ -34,4 +33,8 @@ public class Profile{
 	String type;
 	@JsonProperty("httpUrls")
 	List<String> httpUrls;
+
+	public Profile() {
+		super();
+	}
 }

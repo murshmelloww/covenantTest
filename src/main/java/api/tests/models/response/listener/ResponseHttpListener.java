@@ -10,7 +10,6 @@ import lombok.Value;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-
 public class ResponseHttpListener{
 	@JsonProperty("bindPort")
 	int bindPort;

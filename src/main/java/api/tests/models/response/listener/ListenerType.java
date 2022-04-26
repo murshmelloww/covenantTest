@@ -8,8 +8,12 @@ import lombok.Value;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-@Builder
 public class ListenerType{
+
+	public ListenerType() {
+		super();
+	}
+
 	@JsonProperty("name")
 	String name;
 	@JsonProperty("description")

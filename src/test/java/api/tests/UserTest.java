@@ -2,10 +2,10 @@ package api.tests;
 
 import api.tests.models.request.listener.HttpListenerBody;
 import api.tests.models.request.login.LoginBody;
+import api.tests.models.response.launcher.ResponseLauncher;
 import api.tests.models.response.listener.ResponseHttpListener;
 import api.tests.models.response.login.ResponseLogin;
 import io.restassured.builder.RequestSpecBuilder;
-import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.junit.jupiter.api.AfterAll;
@@ -14,14 +14,14 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import utils.testhelpers.TestHelper;
 
-import java.io.IOException;
-import java.util.concurrent.TimeUnit;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 
 import static io.restassured.RestAssured.given;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class LoginTest extends TestHelper {
+public class UserTest extends TestHelper {
 
     String token = "";
 
@@ -34,26 +34,35 @@ public class LoginTest extends TestHelper {
     }
 
     @Test
-    public  void loginTest () throws InterruptedException {
+    public  void loginTest () throws InterruptedException, IOException {
 
-        ResponseLogin responseLogin = CreatePost.code200(
+        ResponseLogin responseLogin = CreateRequest.post200(
                 LoginBody.getInstance("admin", "123")
         );
         assertEquals(true, responseLogin.getSuccess());
-        token = responseLogin.getCovenantToken();
-
-        HttpListenerBody httpListenerBody = HttpListenerBody.getInstance();
 
         ResponseHttpListener responseHttpListener =
-                CreatePost.code200(httpListenerBody, token);
+                CreateRequest.post200(
+                        HttpListenerBody.getInstance(),
+                        responseLogin.getCovenantToken());
 
+        ResponseLauncher responseLauncher =
+                CreateRequest.post200(responseLogin.getCovenantToken());
+
+        ResponseLauncher downloadLauncher =
+                CreateRequest.get200(responseLogin.getCovenantToken());
+
+        File file = new File("src/test/resources/" + downloadLauncher.getLauncherString());
+        FileOutputStream fo = new FileOutputStream(file);
+        fo.write(downloadLauncher.getStagerCode().getBytes(StandardCharsets.UTF_8));
+        fo.close();
     }
 
     @Test
     public  void createListenerTest ()  {
         HttpListenerBody httpListenerBody = HttpListenerBody.getInstance();
         ResponseHttpListener responseHttpListener =
-                CreatePost.code200(httpListenerBody, token);
+                CreateRequest.post200(httpListenerBody, token);
     }
     @Test
     public  void generateLauncherTest () throws InterruptedException {
@@ -69,6 +78,7 @@ public class LoginTest extends TestHelper {
         //create request body
         //send request
         //download file on created folder
+       // File file = new File("newFile/GruntHTTP.exe");
 
     }
 

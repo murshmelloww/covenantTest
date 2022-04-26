@@ -8,8 +8,12 @@ import lombok.Value;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-@Builder
 public class HttpRequestHeadersItem{
+
+	public HttpRequestHeadersItem() {
+		super();
+	}
+
 	@JsonProperty("name")
 	String name;
 	@JsonProperty("value")
