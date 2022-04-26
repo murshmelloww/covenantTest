@@ -8,19 +8,21 @@ import api.tests.models.response.login.ResponseLogin;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.*;
 import utils.testhelpers.TestHelper;
 
 import java.io.*;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.nio.channels.Channels;
+import java.nio.channels.ReadableByteChannel;
 import java.nio.charset.StandardCharsets;
 
 import static io.restassured.RestAssured.given;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class UserTest extends TestHelper {
 
     String token = "";
@@ -34,61 +36,45 @@ public class UserTest extends TestHelper {
     }
 
     @Test
+    @Order(1)
     public  void loginTest () throws InterruptedException, IOException {
 
-        ResponseLogin responseLogin = CreateRequest.post200(
+        responseLogin = CreateRequest.post200(
                 LoginBody.getInstance("admin", "123")
         );
         assertEquals(true, responseLogin.getSuccess());
-
-        ResponseHttpListener responseHttpListener =
-                CreateRequest.post200(
-                        HttpListenerBody.getInstance(),
-                        responseLogin.getCovenantToken());
-
-        ResponseLauncher responseLauncher =
-                CreateRequest.post200(responseLogin.getCovenantToken());
-
-        ResponseLauncher downloadLauncher =
-                CreateRequest.get200(responseLogin.getCovenantToken());
-
-        File file = new File("src/test/resources/" + downloadLauncher.getLauncherString());
-        FileOutputStream fo = new FileOutputStream(file);
-        fo.write(downloadLauncher.getStagerCode().getBytes(StandardCharsets.UTF_8));
-        fo.close();
     }
 
     @Test
+    @Order(2)
     public  void createListenerTest ()  {
-        HttpListenerBody httpListenerBody = HttpListenerBody.getInstance();
-        ResponseHttpListener responseHttpListener =
-                CreateRequest.post200(httpListenerBody, token);
+        responseHttpListener = CreateRequest.post200(
+                HttpListenerBody.getInstance(),
+                responseLogin.getCovenantToken()
+        );
     }
     @Test
-    public  void generateLauncherTest () throws InterruptedException {
-        //create request body
-        //send request
-        //verify answer
-
+    @Order(3)
+    public  void generateLauncherTest () throws InterruptedException, IOException {
+        responseLauncher = CreateRequest.post200(
+                responseLogin.getCovenantToken()
+        );
     }
 
     @Test
+    @Order(4)
     public  void downloadLauncherTest () throws InterruptedException {
-        //create folder var/www/html
-        //create request body
-        //send request
-        //download file on created folder
-       // File file = new File("newFile/GruntHTTP.exe");
+        downloadLauncher = CreateRequest.get200(
+                responseLogin.getCovenantToken()
+        );
 
     }
 
     @Test
-    public  void uploadLauncherFileTest () throws InterruptedException {
-
+    @Order(5)
+    public  void hostFileTest () throws InterruptedException {
         downloadFileOnWindows();
     }
-
-
 
     @Test
     public  void execLauncherFileTest () throws InterruptedException {
@@ -96,7 +82,7 @@ public class UserTest extends TestHelper {
     }
     @Test
     public  void verifyConnectionTest () throws InterruptedException {
-
+        //check grunts list
         checkConnectionOnWindows();
     }
 
@@ -130,6 +116,15 @@ public class UserTest extends TestHelper {
 //                .extract().response();
 //        String str = response.toString();
 //        System.out.println(str);
+    }
+
+    public static void downloadFile(URL url, String outputFileName) throws IOException
+    {
+        try (InputStream in = url.openStream();
+             ReadableByteChannel rbc = Channels.newChannel(in);
+             FileOutputStream fos = new FileOutputStream(outputFileName)) {
+            fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
+        }
     }
 
 }
