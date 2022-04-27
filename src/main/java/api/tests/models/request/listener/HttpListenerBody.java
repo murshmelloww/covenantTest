@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeId;
 import lombok.Builder;
 import lombok.Data;
+import org.joda.time.DateTime;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -52,7 +53,7 @@ public class HttpListenerBody{
 	@JsonProperty("status")
 	private String status;
 
-	public static HttpListenerBody getInstance()
+	public static HttpListenerBody getInstance(String covenantToken)
 	{
 		return HttpListenerBody.builder()
 				.useSSL(false)
@@ -69,9 +70,9 @@ public class HttpListenerBody{
 				.profile(Profile.getInstance())
 				.listenerTypeId(1)
 				.listenerType(ListenerType.getInstance())
-				.status("uninitialized")
+				.status("active")
 				.covenantUrl("https://localhost:7443")
-				.covenantToken("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1ZGVkYTc4Ny0wMDk4LWEyNDQtM2EwOC1jYjE2MTFmYTYyMzYiLCJqdGkiOiIxODYxNGZlOS1jNGRkLTI2MzItNDk1ZS04NjQwNmVmZTg1ZjkiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjExYmY1MGZlLWQxZDQtNDUyMS05M2Y0LTcwMTU3YzkxNTA5ZSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6Ikxpc3RlbmVyIiwiZXhwIjoxODIzNjA5ODMwLCJpc3MiOiJDb3ZlbmFudCIsImF1ZCI6IkNvdmVuYW50In0._RTvkt3j1vowRl-_GrTy6BSwVwDahU632MB5sHYx9O8")
+				.covenantToken(covenantToken)
 				.startTime("2022-04-24T14:33:08.216Z")
 				.build();
 	}

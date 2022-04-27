@@ -1,7 +1,9 @@
 package api.tests;
 
+import api.tests.models.request.launcher.LauncherBody;
 import api.tests.models.request.listener.HttpListenerBody;
 import api.tests.models.request.login.LoginBody;
+import io.restassured.http.ContentType;
 import io.restassured.response.ValidatableResponse;
 import org.assertj.core.api.Java6StandardSoftAssertionsProvider;
 
@@ -13,6 +15,7 @@ public class CovenantEndpointConfig extends CovenantEndpointSpec {
 
         return given()
                 .spec(set())
+                .contentType(ContentType.JSON)
                 .body(body)
                 .when()
                 .post("/users/login")
@@ -26,6 +29,7 @@ public class CovenantEndpointConfig extends CovenantEndpointSpec {
 
         return given()
                 .spec(set())
+                .contentType(ContentType.JSON)
                 .body(body)
                 .header("Authorization","Bearer " + token)
                 .when()
@@ -37,9 +41,20 @@ public class CovenantEndpointConfig extends CovenantEndpointSpec {
     public static ValidatableResponse createLauncher(String token) {
         return given()
                 .spec(set())
+                .contentType(ContentType.JSON)
                 .header("Authorization","Bearer " + token)
                 .when()
                 .post("launchers/binary")
+                .then();
+    }
+
+    public static ValidatableResponse createHostedFiles(String token, Integer listenerId) {
+        return given()
+                .spec(set())
+                .contentType(ContentType.JSON)
+                .header("Authorization","Bearer " + token)
+                .when()
+                .get("listeners/"+ listenerId +"/hostedfiles")
                 .then();
     }
 
@@ -48,7 +63,19 @@ public class CovenantEndpointConfig extends CovenantEndpointSpec {
                 .spec(set())
                 .header("Authorization","Bearer " + token)
                 .when()
+                .contentType("application/octet-stream")
                 .get("launchers/binary")
+                .then();
+    }
+
+    public static ValidatableResponse generateLauncher(String token, LauncherBody body) {
+        return given()
+                .spec(set())
+                .contentType(ContentType.JSON)
+                .body(body)
+                .header("Authorization","Bearer " + token)
+                .when()
+                .put("launchers/binary")
                 .then();
     }
 }

@@ -36,7 +36,7 @@ public class TestHelper {
     }
 
     protected void stopCovenantDocker() throws IOException {
-        Process process = Runtime.getRuntime().exec("docker stop covenant");
+        //Process process = Runtime.getRuntime().exec("docker stop covenant");
     }
 
     protected void stopWindowsDocker() throws IOException {
