@@ -5,7 +5,6 @@ import api.tests.models.request.listener.HttpListenerBody;
 import api.tests.models.request.login.LoginBody;
 import io.restassured.http.ContentType;
 import io.restassured.response.ValidatableResponse;
-import org.assertj.core.api.Java6StandardSoftAssertionsProvider;
 
 import static io.restassured.RestAssured.given;
 
