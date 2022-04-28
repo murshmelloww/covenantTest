@@ -42,7 +42,15 @@ public class RunCommandViaSsh {
             closeConnection(channel, session);
         }
     }
+    public static void runCommand(String command, Boolean await) throws JSchException {
+        Session session = setupSshSession();
+        session.connect();
 
+        ChannelExec channel = (ChannelExec) session.openChannel("exec");
+        channel.setCommand(command);
+        channel.connect();
+
+    }
     private static Session setupSshSession() throws JSchException {
         Session session = new JSch().getSession(SSH_LOGIN, SSH_HOST, SSH_PORT);
         session.setPassword(SSH_PASSWORD);

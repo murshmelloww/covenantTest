@@ -1,5 +1,6 @@
 package api.tests;
 
+import api.tests.config.CreateRequest;
 import api.tests.models.request.launcher.LauncherBody;
 import api.tests.models.request.listener.HttpListenerBody;
 import api.tests.models.request.login.LoginBody;
@@ -12,9 +13,6 @@ import org.junit.jupiter.api.*;
 import utils.testhelpers.TestHelper;
 
 import java.io.*;
-import java.net.URL;
-import java.nio.channels.Channels;
-import java.nio.channels.ReadableByteChannel;
 import java.util.Arrays;
 import java.util.Base64;
 
@@ -23,14 +21,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class UserTest extends TestHelper {
-    @BeforeAll
-    public void startSessions() throws IOException {
-        runCovenantDocker();
-        runWindowsDocker();
-        runHTTPserver();
-
-    }
-
     @Test
     @Order(1)
     public  void loginTest ()   {
@@ -86,39 +76,36 @@ public class UserTest extends TestHelper {
         AppEntryPoint.transferFile(responseLauncher.getLauncherString());
     }
 
+    @Test
     @Order(6)
-    public  void execLauncherFileTest () throws JSchException {
-        RunCommandViaSsh.runCommand("C:\\test\\files\\GruntHTTP.exe");
+    public synchronized  void execLauncherFileTest () throws JSchException {
+        RunCommandViaSsh.runCommand("C:\\test\\files\\GruntHTTP.exe", false);
     }
+    @Test
     @Order(7)
-    public  void verifyConnectionTest () throws InterruptedException {
+    public synchronized  void verifyConnectionTest () throws InterruptedException {
         ResponseGruntItem[] responseGruntItems = CreateRequest.get200(responseLogin.getCovenantToken());
         for (ResponseGruntItem responseGruntItem: responseGruntItems) {
 //            if (responseGruntItem.getListenerId() == responseHttpListener.getId() &&
             if (responseGruntItem.getListenerId() == 24 &&
-            responseGruntItem.getUserName().equals("remote"))
+            responseGruntItem.getUserName().equals("remote") && responseGruntItem.getStatus().equals("active"))
             {
-                assertEquals("active", responseGruntItem.getStatus());
+                System.out.println("Connection successful!");
             }
 
         }
     }
 
-    @AfterAll
-    public void terminateAll() throws IOException {
-        stopHTTPserver();
-        stopCovenantDocker();
-        stopWindowsDocker();
+    @Test
+    @Order(8)
+    public synchronized  void taskKillLauncherFileTest () throws JSchException {
+        RunCommandViaSsh.runCommand("taskkill /IM GruntHTTP.exe /F");
     }
 
-
-    public static void downloadFile(URL url, String outputFileName) throws IOException
-    {
-        try (InputStream in = url.openStream();
-             ReadableByteChannel rbc = Channels.newChannel(in);
-             FileOutputStream fos = new FileOutputStream(outputFileName)) {
-            fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
-        }
+    @Test
+    @Order(8)
+    public synchronized  void deleteListenerTest () throws JSchException {
+        CreateRequest.delete204(responseHttpListener.getId(), responseLogin.getCovenantToken());
     }
 
 }

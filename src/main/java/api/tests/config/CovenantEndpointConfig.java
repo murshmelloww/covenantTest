@@ -1,4 +1,4 @@
-package api.tests;
+package api.tests.config;
 
 import api.tests.models.request.launcher.LauncherBody;
 import api.tests.models.request.listener.HttpListenerBody;
@@ -76,6 +76,17 @@ public class CovenantEndpointConfig extends CovenantEndpointSpec {
                 .header("Authorization","Bearer " + token)
                 .when()
                 .get("grunts")
+                .then();
+    }
+
+    public static ValidatableResponse deleteListener(Integer listenerId, String token) {
+
+        return given()
+                .spec(set())
+                .contentType(ContentType.JSON)
+                .header("Authorization","Bearer " + token)
+                .when()
+                .delete("listeners/" + listenerId)
                 .then();
     }
 }

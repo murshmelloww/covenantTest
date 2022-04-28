@@ -43,7 +43,6 @@ public final class AppEntryPoint
             System.err.println("Failed to upload the file!");
             e.printStackTrace();
         }
-
         scpUploader.disconnect();
     }
 }

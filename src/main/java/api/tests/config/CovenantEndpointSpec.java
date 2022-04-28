@@ -1,7 +1,6 @@
-package api.tests;
+package api.tests.config;
 
 import io.restassured.builder.RequestSpecBuilder;
-import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 
 public class CovenantEndpointSpec implements ConfigurationManager {

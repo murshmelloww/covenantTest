@@ -15,7 +15,6 @@ public final class ScpUploader
     {
         return new ScpUploader();
     }
-
     private volatile Session session;
     private volatile ChannelSftp channel;
 
