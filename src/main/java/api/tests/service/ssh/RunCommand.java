@@ -1,4 +1,4 @@
-package api.tests.service;
+package api.tests.service.ssh;
 
 import com.google.common.io.CharStreams;
 import com.jcraft.jsch.ChannelExec;
@@ -13,7 +13,7 @@ import java.util.List;
 
 import static java.util.Arrays.asList;
 
-public class RunCommandViaSsh {
+public class RunCommand {
 
     private static final String SSH_HOST = "192.168.1.69";
     private static final int SSH_PORT = 22;

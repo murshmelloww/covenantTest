@@ -1,4 +1,4 @@
-package api.tests.service;
+package api.tests.service.ssh;
 
 import com.jcraft.jsch.ChannelSftp;
 import com.jcraft.jsch.JSch;

@@ -1,4 +1,4 @@
-package api.tests.service;
+package api.tests.service.ssh;
 
 import com.jcraft.jsch.JSchException;
 import com.jcraft.jsch.SftpException;
