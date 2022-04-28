@@ -12,6 +12,7 @@ repositories {
 dependencies {
     implementation 'org.aeonbits.owner:owner:1.0.12'
     implementation 'org.projectlombok:lombok:1.18.22'
+    implementation 'com.jcraft:jsch:0.1.55'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
     implementation 'io.rest-assured:rest-assured:4.2.1'

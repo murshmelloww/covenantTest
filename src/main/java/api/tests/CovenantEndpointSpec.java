@@ -11,7 +11,7 @@ public class CovenantEndpointSpec implements ConfigurationManager {
                 setBaseUri(configuration.url()).
                 setBasePath(configuration.path()).
                 setPort(configuration.port()).
-                setContentType(ContentType.JSON).
+                //setContentType(ContentType.JSON).
                 setRelaxedHTTPSValidation().
                 build().
                 log().all().
