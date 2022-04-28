@@ -8,7 +8,7 @@ I realised package config for connecting to Covenant
 
 I realised package model for verifying response and creating request body
 
-I modified some code example for working with jcraft from stack overflow and  create package service.ssh
+I modified some code example for working with jcraft from stack overflow and create package service.ssh
 
 Main test is in UserTest class
 * loginTest - User login and get user auth token
