@@ -24,6 +24,7 @@ import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
+import java.util.Base64;
 
 import static io.restassured.RestAssured.given;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -73,18 +74,18 @@ public class UserTest extends TestHelper {
     @Order(4)
     public  void downloadLauncherTest () throws IOException {
 
-//        File file = new File("src/test/resources/" + "GruntHTTP.exe");
-//        String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbiIsImp0aSI6IjQxNTJmNTZjLTA2MTUtZDEyZS05Yjg0LTQyMTc5ZDRkYmZiMCIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiZjE5MzAxNWUtYjVjNy00NjRlLWJmZjgtZjBlMDc1NzNjMGIyIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjpbIlVzZXIiLCJBZG1pbmlzdHJhdG9yIl0sImV4cCI6MTY1OTcwNDkzMiwiaXNzIjoiQ292ZW5hbnQiLCJhdWQiOiJDb3ZlbmFudCJ9.iE6841fb2mcToNJGFGzaiA8wksd1pziUAVi5BFGxaUU";
-////        ResponseHostedFiles responseHostedFiles = CreateRequest.get200(
-////                responseLogin.getCovenantToken(),
-////                responseHttpListener.getId());
-//        ResponseHostedFilesItem[] responseHostedFilesItems = CreateRequest.get200(
-//                token,
-//                616);
-//        ResponseHostedFilesItem responseHostedFilesItem = Arrays.stream(responseHostedFilesItems).findFirst().get();
-//        OutputStream os = new FileOutputStream(file);
-//        os.write(responseHostedFilesItem.getContent().getBytes(StandardCharsets.UTF_8));
-//        os.close();
+        File file = new File("src/test/resources/" + "GruntHTTP.exe");
+        String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbiIsImp0aSI6IjQxNTJmNTZjLTA2MTUtZDEyZS05Yjg0LTQyMTc5ZDRkYmZiMCIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiZjE5MzAxNWUtYjVjNy00NjRlLWJmZjgtZjBlMDc1NzNjMGIyIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjpbIlVzZXIiLCJBZG1pbmlzdHJhdG9yIl0sImV4cCI6MTY1OTcwNDkzMiwiaXNzIjoiQ292ZW5hbnQiLCJhdWQiOiJDb3ZlbmFudCJ9.iE6841fb2mcToNJGFGzaiA8wksd1pziUAVi5BFGxaUU";
+//        ResponseHostedFiles responseHostedFiles = CreateRequest.get200(
+//                responseLogin.getCovenantToken(),
+//                responseHttpListener.getId());
+        ResponseHostedFilesItem[] responseHostedFilesItems = CreateRequest.get200(
+                token,
+                618);
+        ResponseHostedFilesItem responseHostedFilesItem = Arrays.stream(responseHostedFilesItems).findFirst().get();
+        OutputStream os = new FileOutputStream(file);
+        os.write(Base64.getDecoder().decode(responseHostedFilesItem.getContent().getBytes()));
+        os.close();
 
     }
 
