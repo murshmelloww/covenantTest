@@ -58,16 +58,6 @@ public class CovenantEndpointConfig extends CovenantEndpointSpec {
                 .then();
     }
 
-    public static ValidatableResponse getLauncher(String token) {
-        return given()
-                .spec(set())
-                .header("Authorization","Bearer " + token)
-                .when()
-                .contentType("application/octet-stream")
-                .get("launchers/binary")
-                .then();
-    }
-
     public static ValidatableResponse generateLauncher(String token, LauncherBody body) {
         return given()
                 .spec(set())
@@ -76,6 +66,16 @@ public class CovenantEndpointConfig extends CovenantEndpointSpec {
                 .header("Authorization","Bearer " + token)
                 .when()
                 .put("launchers/binary")
+                .then();
+    }
+
+    public static ValidatableResponse createGrunts(String token) {
+        return given()
+                .spec(set())
+                .contentType(ContentType.JSON)
+                .header("Authorization","Bearer " + token)
+                .when()
+                .get("grunts")
                 .then();
     }
 }

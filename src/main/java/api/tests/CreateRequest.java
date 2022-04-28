@@ -3,6 +3,7 @@ package api.tests;
 import api.tests.models.request.launcher.LauncherBody;
 import api.tests.models.request.listener.HttpListenerBody;
 import api.tests.models.request.login.LoginBody;
+import api.tests.models.response.grunt.ResponseGruntItem;
 import api.tests.models.response.hostedfiles.ResponseHostedFilesItem;
 import api.tests.models.response.launcher.ResponseLauncher;
 import api.tests.models.response.listener.ResponseHttpListener;
@@ -53,24 +54,24 @@ public class CreateRequest {
                 .getObject("", ResponseHostedFilesItem[].class);
     }
 
-//    static ResponseLauncher get200 (String token)
+    static ResponseGruntItem[] get200 (String token)
+    {
+        return CovenantEndpointConfig.createGrunts(token)
+                .assertThat()
+                .statusCode(200)
+                .extract()
+                .jsonPath()
+                .getObject("", ResponseGruntItem[].class);
+    }
+
+//    static InputStream get200 (String token)
 //    {
 //        return CovenantEndpointConfig.getLauncher(token)
 //                .assertThat()
 //                .statusCode(200)
 //                .extract()
-//                .jsonPath()
-//                .getObject("", ResponseLauncher.class);
+//                .asInputStream();
 //    }
-
-    static InputStream get200 (String token)
-    {
-        return CovenantEndpointConfig.getLauncher(token)
-                .assertThat()
-                .statusCode(200)
-                .extract()
-                .asInputStream();
-    }
 
     static ResponseLauncher put200 (String token, LauncherBody body)
     {
