@@ -5,7 +5,6 @@ import api.tests.models.response.listener.ResponseHttpListener;
 import api.tests.models.response.login.ResponseLogin;
 import api.tests.models.response.users.ResponseUsers;
 
-import java.io.IOException;
 
 public class TestHelper {
 

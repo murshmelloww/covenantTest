@@ -11,7 +11,8 @@ I realised package model for verifying response and creating request body
 I modified some code example for working with jcraft from stack overflow and create package service.ssh
 
 Main test is in UserTest class
-* loginTest - User login and get user auth token
+* createUser - login with admin and create new user
+* loginTest - new user login and get user auth token
 * createListenerTest - User create http listener
 * generateLauncherTest - User generate and host Binary launcher
 * downloadLauncherTest - User download launcher
@@ -20,3 +21,4 @@ Main test is in UserTest class
 * verifyConnectionTest - Check grunt creation
 * taskKillLauncherFileTest - Kill process on remote machine
 * deleteListenerTest - Delete created listener
+* deleteUserTest - delete created user
