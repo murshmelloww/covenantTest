@@ -2,14 +2,11 @@ package api.tests.models.request.listener;
 
 import java.util.List;
 
-import api.tests.models.request.login.LoginBody;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeId;
 import lombok.Builder;
 import lombok.Data;
-import org.joda.time.DateTime;
-
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Builder

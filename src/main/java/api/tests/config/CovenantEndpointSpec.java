@@ -1,6 +1,7 @@
 package api.tests.config;
 
 import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 
 public class CovenantEndpointSpec implements ConfigurationManager {
@@ -10,7 +11,7 @@ public class CovenantEndpointSpec implements ConfigurationManager {
                 setBaseUri(configuration.url()).
                 setBasePath(configuration.path()).
                 setPort(configuration.port()).
-                //setContentType(ContentType.JSON).
+                setContentType(ContentType.JSON).
                 setRelaxedHTTPSValidation().
                 build().
                 log().all().
