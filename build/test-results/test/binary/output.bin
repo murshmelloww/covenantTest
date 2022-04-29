@@ -1,54 +1,54 @@
-Request method:	POST
-4Request URI:	https://127.0.0.1:7443/api/users/login
-Proxy:			<none>
-Request params:	<none>
-Query params:	<none>
-Form params:	<none>
-Path params:	<none>
-Headers:		Accept=*/*
-1				Content-Type=application/json; charset=UTF-8
-Cookies:		<none>
-Multiparts:		<none>
-Body:
+Request method:	POST
+5Request URI:	https://127.0.0.1:7443/api/users/login
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=*/*
+2				Content-Type=application/json; charset=UTF-8
+Cookies:		<none>
+Multiparts:		<none>
+Body:
 {
     "password": "123",
     "userName": "admin"
-}
-HTTP/1.1 200 OK
-$Date: Wed, 27 Apr 2022 16:03:25 GMT
-.Content-Type: application/json; charset=utf-8
-Server: Kestrel
-Content-Length: 528
-Cache-Control: no-cache
-Pragma: no-cache
-'Expires: Thu, 01 Jan 1970 00:00:00 GMT
-úSet-Cookie: .AspNetCore.Identity.Application=CfDJ8I-IZTEnA_RCifBvuyv3vMbXXO4KwqHw-NATJo4xsu8BHhPBtnkqdH3NXRcApmk2ttN6bltYBQzvFlJWOX4eLhgkIl9i8FgWJQ1ks9CRrR7FKP3aMtfZtM2MmzlcIhMs5XZA82zNB3myr7Tol-VSHajt1UcOvpMcgb1uKXefdRgHbMrY8yIrRNTKL1lFfEr6KCI5jd6DJrmH52lbG54YZKY_q0l0Jw42GUnczOQcJrl6cF8T-J8KNfz8rYRFqIp-2D-NulJnwCn302f_c7ViQXXR8cgz1_09ZqJ4u6wxhf2tRkW8NniLhB8e7vOTbPN4Bp4aRPcr-435FRltMc-RiXuhxY-Dxm7zsFtmbfP2_59JkkqULmE00D7UNR641i3vT5myx5b_U2vL2FL7No2IbYD0nNfALkgGQRLoTCUxN1KiDhT7_QyH03xZZGCA83W_WcTtsbVO5ZsQ_yhykuYQ8ccWJdGPHMiQ7pAYpB8tfJRIDQq6j70oGKBh5HSkdDYSmu2gNF5qGXwBc-iVgOWkV-2tYMRRzjveohf3lhOCjh_jC-w-fuFcNdlyjNmOmY_ipZ1YLgjSqvBov7-dUMqv91EsU-QpwjROA9Y3hFWxCJjKjIbhGk9i-Ji71ckSdXofORAHSjVblB3mCDuqo46BqFvn3KOcE9es274ab1Qdjc3LD5mdmp-md1xHxxFYxSmcwBs26EK7DLZVB9xuNyBJe2vxZDgsGXW9wy8ys6sdc_qGGHGAXqrGthsJhY-GqzIM-MX7QSw0RfTR1g5AamkVLWNsByo1cuYCwpP5-37-2d5hUanf65jdPdQ5ZXxkeGvXLw; path=/; secure; samesite=lax; httponly
-
+}
+HTTP/1.1 200 OK
+%Date: Thu, 28 Apr 2022 09:45:59 GMT
+/Content-Type: application/json; charset=utf-8
+Server: Kestrel
+Content-Length: 528
+Cache-Control: no-cache
+Pragma: no-cache
+(Expires: Thu, 01 Jan 1970 00:00:00 GMT
+ùSet-Cookie: .AspNetCore.Identity.Application=CfDJ8LwZRVheJvhClq4PUp6UKgaJssvVNULg0itjMT6C7AiUrKFgx1Wmj1hHG-A-vj5sCQ8SGfUk9k998fJp6IyPBd37s73DW2bQTRgiRx4_oUjYPTz464uWbemt2f-nAvykVVfh-YPLndbAWQtu6YPr4_zSgsgamAXYEsjyDIXwLVecazVluYVCqi61X4U0X7dtdQ_bWEA03kvuDRdzEa4_tv8o7fdhC79Sk1iCkupUcvfyuhH7eRwPQ8FnxfCHVaHr0LZM_sbrILM8INWjT08tdCffmZDPeljU-PPN2-HjeR5pXK1Koq3KsQm05qTtSQi482VhnRplesYGcXyTx8m82JkIWgxic9E9TgI640InJNIj6MDW_lWr4wz3BLjJ_ltUHoWJDttSsV0mfZHPApx4hU9jpZVAedy4fMpRAPGmwY9f0HKdBkHKEwVbiwz9pRNDF0zjA1ciyYBB4vlxj_g9LyNARWvuTboAkTisXpaPsRhRhy9I7ZfaHyuJlvM-mmlMdAg9FHQ1uMzNig3lRetl65pIzBjAbXBjj9wxJmYybQ3zvxydOtrw3XBUB3zNjgdKop1l1-iG1lSCXqNzpX9iNQ8fRhu_hX5U-mzrW00tKRBc-Wi4F4EWl_g_6tdmu3Ctf9Yzp1tXnTve9xdh-7EBQpeEXIEaGZNANf_2sEZAGehpripB0HNKb7bT-qZsmaYjYztln3Qa6D9PrMASb5wGZpfdFwAL_H5fdbkggYYee0OEGAamQE4AIUgUmvZFUjcGAH89zBToqEL3MgzO-4Xe4Sz2bY31HNc_muPN5r9S00DXzD5iNB3QqzLuTWTKJEHlrg; path=/; secure; samesite=lax; httponly
+
 {
     "success": true,
-Ö    "covenantToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbiIsImp0aSI6ImQ5OGIzNzQxLWM4MTUtZTE4OC0zYmYyLWYxYjAzMTIwMmVlNCIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiZjE5MzAxNWUtYjVjNy00NjRlLWJmZjgtZjBlMDc1NzNjMGIyIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjpbIlVzZXIiLCJBZG1pbmlzdHJhdG9yIl0sImV4cCI6MTY1OTcxNTQwNiwiaXNzIjoiQ292ZW5hbnQiLCJhdWQiOiJDb3ZlbmFudCJ9.TRDWnzNIy9q4C1ZwcqC5tg4x-gVq3kL3vjz9tLWTtEo"
-}
-Request method:	POST
-7Request URI:	https://127.0.0.1:7443/api/listeners/http
-Proxy:			<none>
-Request params:	<none>
-Query params:	<none>
-Form params:	<none>
-Path params:	<none>
-çHeaders:		Authorization=Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbiIsImp0aSI6ImQ5OGIzNzQxLWM4MTUtZTE4OC0zYmYyLWYxYjAzMTIwMmVlNCIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiZjE5MzAxNWUtYjVjNy00NjRlLWJmZjgtZjBlMDc1NzNjMGIyIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjpbIlVzZXIiLCJBZG1pbmlzdHJhdG9yIl0sImV4cCI6MTY1OTcxNTQwNiwiaXNzIjoiQ292ZW5hbnQiLCJhdWQiOiJDb3ZlbmFudCJ9.TRDWnzNIy9q4C1ZwcqC5tg4x-gVq3kL3vjz9tLWTtEo
-				Accept=*/*
-1				Content-Type=application/json; charset=UTF-8
-Cookies:		<none>
-Multiparts:		<none>
-Body:
+Ö    "covenantToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbiIsImp0aSI6IjgyOGRiOWIyLTlmMTQtYzFkYS0yYzAzLWZmNjdkN2IyMDIxNSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiZDZjMzRmNWMtZTNiYi00OTJhLWFjMmItYjczZjFiNTllYmUxIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjpbIlVzZXIiLCJBZG1pbmlzdHJhdG9yIl0sImV4cCI6MTY1OTc3OTE2MCwiaXNzIjoiQ292ZW5hbnQiLCJhdWQiOiJDb3ZlbmFudCJ9.m07h-OSjxLIgpJzaBWzYa8ugowxKzi5KIRtUIpaYFtg"
+}
+Request method:	POST
+8Request URI:	https://127.0.0.1:7443/api/listeners/http
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+éHeaders:		Authorization=Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbiIsImp0aSI6IjgyOGRiOWIyLTlmMTQtYzFkYS0yYzAzLWZmNjdkN2IyMDIxNSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiZDZjMzRmNWMtZTNiYi00OTJhLWFjMmItYjczZjFiNTllYmUxIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjpbIlVzZXIiLCJBZG1pbmlzdHJhdG9yIl0sImV4cCI6MTY1OTc3OTE2MCwiaXNzIjoiQ292ZW5hbnQiLCJhdWQiOiJDb3ZlbmFudCJ9.m07h-OSjxLIgpJzaBWzYa8ugowxKzi5KIRtUIpaYFtg
+				Accept=*/*
+2				Content-Type=application/json; charset=UTF-8
+Cookies:		<none>
+Multiparts:		<none>
+Body:
 {
-    "bindPort": 80,
+    "bindPort": 81,
     "listenerType": {
         "name": "HTTP",
 )        "description": "cxfgxdfbFDJYGK",
         "id": 1
     },
-Ü    "covenantToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbiIsImp0aSI6ImQ5OGIzNzQxLWM4MTUtZTE4OC0zYmYyLWYxYjAzMTIwMmVlNCIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiZjE5MzAxNWUtYjVjNy00NjRlLWJmZjgtZjBlMDc1NzNjMGIyIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjpbIlVzZXIiLCJBZG1pbmlzdHJhdG9yIl0sImV4cCI6MTY1OTcxNTQwNiwiaXNzIjoiQ292ZW5hbnQiLCJhdWQiOiJDb3ZlbmFudCJ9.TRDWnzNIy9q4C1ZwcqC5tg4x-gVq3kL3vjz9tLWTtEo",
+Ü    "covenantToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbiIsImp0aSI6IjgyOGRiOWIyLTlmMTQtYzFkYS0yYzAzLWZmNjdkN2IyMDIxNSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiZDZjMzRmNWMtZTNiYi00OTJhLWFjMmItYjczZjFiNTllYmUxIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjpbIlVzZXIiLCJBZG1pbmlzdHJhdG9yIl0sImV4cCI6MTY1OTc3OTE2MCwiaXNzIjoiQ292ZW5hbnQiLCJhdWQiOiJDb3ZlbmFudCJ9.m07h-OSjxLIgpJzaBWzYa8ugowxKzi5KIRtUIpaYFtg",
     "profile": {
 ∏        "messageTransform": "public static class MessageTransform\\n{\\n    public static string Transform(byte[] bytes)\\n    {\\n        return System.Convert.ToBase64String(bytes);\\n    }\\n    public static byte[] Invert(string str) {\\n        return System.Convert.FromBase64String(str);\\n    }\\n}\\n",
 &        "name": "DefaultHttpProfile",
@@ -73,20 +73,20 @@
         "192.168.1.69"
     ],
     "status": "active"
-}
-Request method:	PUT
-9Request URI:	https://127.0.0.1:7443/api/launchers/binary
-Proxy:			<none>
-Request params:	<none>
-Query params:	<none>
-Form params:	<none>
-Path params:	<none>
-çHeaders:		Authorization=Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbiIsImp0aSI6ImQ5OGIzNzQxLWM4MTUtZTE4OC0zYmYyLWYxYjAzMTIwMmVlNCIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiZjE5MzAxNWUtYjVjNy00NjRlLWJmZjgtZjBlMDc1NzNjMGIyIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjpbIlVzZXIiLCJBZG1pbmlzdHJhdG9yIl0sImV4cCI6MTY1OTcxNTQwNiwiaXNzIjoiQ292ZW5hbnQiLCJhdWQiOiJDb3ZlbmFudCJ9.TRDWnzNIy9q4C1ZwcqC5tg4x-gVq3kL3vjz9tLWTtEo
-				Accept=*/*
-1				Content-Type=application/json; charset=UTF-8
-Cookies:		<none>
-Multiparts:		<none>
-Body:
+}
+Request method:	PUT
+:Request URI:	https://127.0.0.1:7443/api/launchers/binary
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+éHeaders:		Authorization=Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbiIsImp0aSI6IjgyOGRiOWIyLTlmMTQtYzFkYS0yYzAzLWZmNjdkN2IyMDIxNSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiZDZjMzRmNWMtZTNiYi00OTJhLWFjMmItYjczZjFiNTllYmUxIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjpbIlVzZXIiLCJBZG1pbmlzdHJhdG9yIl0sImV4cCI6MTY1OTc3OTE2MCwiaXNzIjoiQ292ZW5hbnQiLCJhdWQiOiJDb3ZlbmFudCJ9.m07h-OSjxLIgpJzaBWzYa8ugowxKzi5KIRtUIpaYFtg
+				Accept=*/*
+2				Content-Type=application/json; charset=UTF-8
+Cookies:		<none>
+Multiparts:		<none>
+Body:
 {
     "implantTemplateId": 1,
 /    "killDate": "2022-05-24T17:06:31.9076718",
@@ -97,7 +97,7 @@
 $    "runtimeIdentifier": "win_x64",
     "connectAttempts": 5000,
     "validateCert": false,
-    "listenerId": 618,
+    "listenerId": 50,
     "smbPipeName": "gruntsvc",
     "delay": 5,
     "jitterPercent": 10,
@@ -106,19 +106,71 @@
     "name": "Binary",
     "useCertPinning": false,
 '    "outputKind": "consoleApplication"
-}
-Request method:	POST
-9Request URI:	https://127.0.0.1:7443/api/launchers/binary
-Proxy:			<none>
-Request params:	<none>
-Query params:	<none>
-Form params:	<none>
-Path params:	<none>
-çHeaders:		Authorization=Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbiIsImp0aSI6ImQ5OGIzNzQxLWM4MTUtZTE4OC0zYmYyLWYxYjAzMTIwMmVlNCIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiZjE5MzAxNWUtYjVjNy00NjRlLWJmZjgtZjBlMDc1NzNjMGIyIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjpbIlVzZXIiLCJBZG1pbmlzdHJhdG9yIl0sImV4cCI6MTY1OTcxNTQwNiwiaXNzIjoiQ292ZW5hbnQiLCJhdWQiOiJDb3ZlbmFudCJ9.TRDWnzNIy9q4C1ZwcqC5tg4x-gVq3kL3vjz9tLWTtEo
-				Accept=*/*
-1				Content-Type=application/json; charset=UTF-8
-Cookies:		<none>
-Multiparts:		<none>
-Body:			<none>
-&Successfully connected to the server!
- Successfully uploaded the file!
+}
+Request method:	POST
+:Request URI:	https://127.0.0.1:7443/api/launchers/binary
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+éHeaders:		Authorization=Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbiIsImp0aSI6IjgyOGRiOWIyLTlmMTQtYzFkYS0yYzAzLWZmNjdkN2IyMDIxNSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiZDZjMzRmNWMtZTNiYi00OTJhLWFjMmItYjczZjFiNTllYmUxIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjpbIlVzZXIiLCJBZG1pbmlzdHJhdG9yIl0sImV4cCI6MTY1OTc3OTE2MCwiaXNzIjoiQ292ZW5hbnQiLCJhdWQiOiJDb3ZlbmFudCJ9.m07h-OSjxLIgpJzaBWzYa8ugowxKzi5KIRtUIpaYFtg
+				Accept=*/*
+2				Content-Type=application/json; charset=UTF-8
+Cookies:		<none>
+Multiparts:		<none>
+Body:			<none>
+Request method:	GET
+BRequest URI:	https://127.0.0.1:7443/api/listeners/24/hostedfiles
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+éHeaders:		Authorization=Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbiIsImp0aSI6ImFkYWM5ZjAwLThmNzAtYTFkYS03ZTYzLWUyNWVmNThjOGMzNSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiZDZjMzRmNWMtZTNiYi00OTJhLWFjMmItYjczZjFiNTllYmUxIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjpbIlVzZXIiLCJBZG1pbmlzdHJhdG9yIl0sImV4cCI6MTY1OTc3Mzk0OCwiaXNzIjoiQ292ZW5hbnQiLCJhdWQiOiJDb3ZlbmFudCJ9.6ntjIYrco5uLTQP2zI5tBFSDK4xNgHleaAgyv1wfIcc
+				Accept=*/*
+2				Content-Type=application/json; charset=UTF-8
+Cookies:		<none>
+Multiparts:		<none>
+Body:			<none>
+'Successfully connected to the server!
+!Successfully uploaded the file!
+Request method:	GET
+0Request URI:	https://127.0.0.1:7443/api/grunts
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+éHeaders:		Authorization=Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbiIsImp0aSI6IjgyOGRiOWIyLTlmMTQtYzFkYS0yYzAzLWZmNjdkN2IyMDIxNSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiZDZjMzRmNWMtZTNiYi00OTJhLWFjMmItYjczZjFiNTllYmUxIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjpbIlVzZXIiLCJBZG1pbmlzdHJhdG9yIl0sImV4cCI6MTY1OTc3OTE2MCwiaXNzIjoiQ292ZW5hbnQiLCJhdWQiOiJDb3ZlbmFudCJ9.m07h-OSjxLIgpJzaBWzYa8ugowxKzi5KIRtUIpaYFtg
+				Accept=*/*
+2				Content-Type=application/json; charset=UTF-8
+Cookies:		<none>
+Multiparts:		<none>
+Body:			<none>
+
+Request method:	DELETE
+
+6Request URI:	https://127.0.0.1:7443/api/listeners/50
+
+Proxy:			<none>
+
+Request params:	<none>
+
+Query params:	<none>
+
+Form params:	<none>
+
+Path params:	<none>
+
+éHeaders:		Authorization=Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbiIsImp0aSI6IjgyOGRiOWIyLTlmMTQtYzFkYS0yYzAzLWZmNjdkN2IyMDIxNSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiZDZjMzRmNWMtZTNiYi00OTJhLWFjMmItYjczZjFiNTllYmUxIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjpbIlVzZXIiLCJBZG1pbmlzdHJhdG9yIl0sImV4cCI6MTY1OTc3OTE2MCwiaXNzIjoiQ292ZW5hbnQiLCJhdWQiOiJDb3ZlbmFudCJ9.m07h-OSjxLIgpJzaBWzYa8ugowxKzi5KIRtUIpaYFtg
+
+				Accept=*/*
+
+2				Content-Type=application/json; charset=UTF-8
+
+Cookies:		<none>
+
+Multiparts:		<none>
+
+Body:			<none>
