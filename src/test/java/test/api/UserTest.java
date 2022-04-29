@@ -10,6 +10,7 @@ import test.api.service.ssh.AppEntryPoint;
 import test.api.service.ssh.RunCommand;
 import com.jcraft.jsch.JSchException;
 import org.junit.jupiter.api.*;
+import test.ui.FrontTest;
 
 import java.io.*;
 
@@ -66,7 +67,7 @@ public class UserTest extends TestHelper {
 
     @Test
     @Order(4)
-    public  void downloadLauncherTest () throws IOException {
+    public  void downloadLauncherTest () throws IOException, InterruptedException {
         //for checking this test it is necessary to host a file using front system, and replace
         //responseHttpListener.getId() with listener Id
 
@@ -86,6 +87,7 @@ public class UserTest extends TestHelper {
 //        System.out.println(CreateRequest.getFile200(responseLogin.getCovenantToken()).readAllBytes());
 //        CreateRequest.getFile200(responseLogin.getCovenantToken()).transferTo(os);
 //        os.close();
+        FrontTest.downLoadFileTest("testUser", "123");
     }
 
     @Test
