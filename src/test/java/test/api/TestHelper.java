@@ -1,9 +1,9 @@
-package utils.testhelpers;
+package test.api;
 
-import api.tests.models.response.launcher.ResponseLauncher;
-import api.tests.models.response.listener.ResponseHttpListener;
-import api.tests.models.response.login.ResponseLogin;
-import api.tests.models.response.users.ResponseUsers;
+import test.api.models.response.launcher.ResponseLauncher;
+import test.api.models.response.listener.ResponseHttpListener;
+import test.api.models.response.login.ResponseLogin;
+import test.api.models.response.users.ResponseUsers;
 
 
 public class TestHelper {

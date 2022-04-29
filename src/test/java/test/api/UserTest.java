@@ -1,18 +1,15 @@
-package api.tests;
+package test.api;
 
-import api.tests.config.CreateRequest;
-import api.tests.models.request.launcher.LauncherBody;
-import api.tests.models.request.listener.HttpListenerBody;
-import api.tests.models.request.login.LoginBody;
-import api.tests.models.request.users.CreateUserBody;
-import api.tests.models.response.grunt.ResponseGruntItem;
-import api.tests.service.ssh.AppEntryPoint;
-import api.tests.service.ssh.RunCommand;
+import test.api.config.CreateRequest;
+import test.api.models.request.launcher.LauncherBody;
+import test.api.models.request.listener.HttpListenerBody;
+import test.api.models.request.login.LoginBody;
+import test.api.models.request.users.CreateUserBody;
+import test.api.models.response.grunt.ResponseGruntItem;
+import test.api.service.ssh.AppEntryPoint;
+import test.api.service.ssh.RunCommand;
 import com.jcraft.jsch.JSchException;
 import org.junit.jupiter.api.*;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import utils.testhelpers.TestHelper;
 
 import java.io.*;
 
@@ -42,7 +39,7 @@ public class UserTest extends TestHelper {
                 LoginBody.getInstance("testUser", "123")
         );
         System.out.println("Login successful!");
-        assertEquals(true, responseLogin.getSuccess());
+        Assertions.assertEquals(true, responseLogin.getSuccess());
     }
 
     @Test
@@ -52,7 +49,7 @@ public class UserTest extends TestHelper {
                 HttpListenerBody.getInstance(responseLogin.getCovenantToken()),
                 responseLogin.getCovenantToken()
         );
-        assertEquals("active", responseHttpListener.getStatus());
+        Assertions.assertEquals("active", responseHttpListener.getStatus());
         System.out.println("Listener activated!");
     }
     @Test
@@ -80,6 +77,14 @@ public class UserTest extends TestHelper {
 //        ResponseHostedFilesItem responseHostedFilesItem = Arrays.stream(responseHostedFilesItems).findFirst().get();
 //        OutputStream os = new FileOutputStream(file);
 //        os.write(Base64.getDecoder().decode(responseHostedFilesItem.getContent().getBytes()));
+//        os.close();
+
+        //this part will work if endpoint return a file
+
+//        File file = new File("src/test/resources/" + "GruntHTTP.exe");
+//        OutputStream os = new FileOutputStream(file);
+//        System.out.println(CreateRequest.getFile200(responseLogin.getCovenantToken()).readAllBytes());
+//        CreateRequest.getFile200(responseLogin.getCovenantToken()).transferTo(os);
 //        os.close();
     }
 
