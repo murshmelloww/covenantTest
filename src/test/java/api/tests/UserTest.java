@@ -15,7 +15,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import utils.testhelpers.TestHelper;
 
 import java.io.*;
-import java.sql.Driver;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
