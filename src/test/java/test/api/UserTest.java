@@ -1,16 +1,16 @@
 package test.api;
 
-import test.api.config.CreateRequest;
-import test.api.models.request.launcher.LauncherBody;
-import test.api.models.request.listener.HttpListenerBody;
-import test.api.models.request.login.LoginBody;
-import test.api.models.request.users.CreateUserBody;
-import test.api.models.response.grunt.ResponseGruntItem;
-import test.api.service.ssh.AppEntryPoint;
-import test.api.service.ssh.RunCommand;
+import test.config.ConfigurationManager;
+import test.api.covenant.CreateRequest;
+import test.api.covenant.models.request.launcher.LauncherBody;
+import test.api.covenant.models.request.listener.HttpListenerBody;
+import test.api.covenant.models.request.login.LoginBody;
+import test.api.covenant.models.request.users.CreateUserBody;
+import test.api.covenant.models.response.grunt.ResponseGruntItem;
+import test.api.ssh.service.AppEntryPoint;
+import test.api.ssh.service.RunCommand;
 import com.jcraft.jsch.JSchException;
 import org.junit.jupiter.api.*;
-import test.ui.FrontTest;
 
 import java.io.*;
 
@@ -18,17 +18,17 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class UserTest extends TestHelper {
+public class UserTest extends TestHelper implements ConfigurationManager {
 
     @BeforeAll
     public void createUser ()
     {
         responseLogin = CreateRequest.post200(
-                LoginBody.getInstance("admin", "123")
-        );
+                LoginBody.getInstance(configuration.adminName(), configuration.adminPassword()));
         adminToken = responseLogin.getCovenantToken();
+
         responseUsers =  CreateRequest.postUser201(
-                CreateUserBody.getInstance("testUser", "123"),
+                CreateUserBody.getInstance(configuration.userName(), configuration.userPassword()),
                 adminToken
         );
     }
@@ -37,7 +37,7 @@ public class UserTest extends TestHelper {
     public  void loginTest ()   {
 
         responseLogin = CreateRequest.post200(
-                LoginBody.getInstance("testUser", "123")
+                LoginBody.getInstance(configuration.userName(), configuration.userPassword())
         );
         System.out.println("Login successful!");
         Assertions.assertEquals(true, responseLogin.getSuccess());
@@ -87,7 +87,6 @@ public class UserTest extends TestHelper {
 //        System.out.println(CreateRequest.getFile200(responseLogin.getCovenantToken()).readAllBytes());
 //        CreateRequest.getFile200(responseLogin.getCovenantToken()).transferTo(os);
 //        os.close();
-        FrontTest.downLoadFileTest("testUser", "123");
     }
 
     @Test

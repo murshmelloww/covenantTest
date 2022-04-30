@@ -1,52 +1,165 @@
 package test.ui;
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
+import com.jcraft.jsch.JSchException;
+import org.junit.jupiter.api.*;
+import test.config.ConfigurationManager;
+import test.api.covenant.CreateRequest;
+import test.api.covenant.models.request.launcher.LauncherBody;
+import test.api.covenant.models.request.listener.HttpListenerBody;
+import test.api.covenant.models.request.login.LoginBody;
+import test.api.covenant.models.request.users.CreateUserBody;
+import test.api.covenant.models.response.grunt.ResponseGruntItem;
+import test.api.ssh.service.AppEntryPoint;
+import test.api.ssh.service.RunCommand;
 
-import java.util.HashMap;
+import java.io.File;
+import java.io.IOException;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class FrontTest extends TestHelper {
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+public class FrontTest extends TestHelper implements ConfigurationManager {
 
     @BeforeAll
-    public void configbrowser()
+    public void configuration()
     {
-        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-        ChromeOptions chromeOptions = new ChromeOptions();
-        HashMap<String, Object> chromePrefs = new HashMap<String, Object>();
-        chromePrefs.put("profile.default_content_settings.popups", 0);
-        String downloadDir = System.getProperty("user.dir") + "\\src\\test\\resources";
-        chromePrefs.put("download.default_directory", downloadDir);
-        chromePrefs.put("download.prompt_for_download", false);
-        chromePrefs.put("safebrowsing.enabled", true);
-        chromeOptions.setExperimentalOption("prefs", chromePrefs);
-        chromeOptions.addArguments("ignore-certificate-errors");
-        chromeOptions.addArguments("--safebrowsing-disable-download-protection");
-        chromeOptions.addArguments("safebrowsing-disable-extension-blacklist");
-        driver = new ChromeDriver(chromeOptions);
-        basePath = "https://127.0.0.1:7443";
+
+        driver = configureDriver(driver);
+        basePath = configuration.basePath();
     }
 
     @Test
-    public static void downLoadFileTest(String user, String password) throws InterruptedException {
+    @Order(1)
+    public void createUser ()
+    {
+        responseLogin = CreateRequest.post200(
+                LoginBody.getInstance(configuration.adminName(), configuration.adminPassword()));
+        adminToken = responseLogin.getCovenantToken();
 
+        responseUsers =  CreateRequest.postUser201(
+                CreateUserBody.getInstance(configuration.userName(), configuration.userPassword()),
+                adminToken
+        );
+    }
+    @Test
+    @Order(2)
+    public  void loginTest ()   {
+        responseLogin = CreateRequest.post200(
+                LoginBody.getInstance(configuration.userName(), configuration.userPassword())
+        );
+        System.out.println("Login successful!");
+        Assertions.assertEquals(true, responseLogin.getSuccess());
+    }
+
+    @Test
+    @Order(3)
+    public  void createListenerTest ()  {
+        responseHttpListener = CreateRequest.post200(
+                HttpListenerBody.getInstance(responseLogin.getCovenantToken()),
+                responseLogin.getCovenantToken()
+        );
+        Assertions.assertEquals("active", responseHttpListener.getStatus());
+        System.out.println("Listener activated!");
+    }
+    @Test
+    @Order(4)
+    public  void generateLauncherTest ()  {
+        responseLauncher = CreateRequest.put200(
+                responseLogin.getCovenantToken(),
+                LauncherBody.getInstance(responseHttpListener.getId())
+        );
+        responseLauncher = CreateRequest.post200(
+                responseLogin.getCovenantToken()
+        );
+        Assertions.assertEquals("GruntHTTP.exe", responseLauncher.getLauncherString());
+        System.out.println("Launcher generated!");
+    }
+
+    @Test
+    @Order(5)
+    public void downLoadFileTest() throws InterruptedException {
 
         driver.get(basePath + loginEndpoint);
-        getElement(userLogin).sendKeys(user);
-        getElement(userPassword).sendKeys(password);
-        getElement(loginButton).click();
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.loginAs(configuration.userName(), configuration.userPassword());
+
         driver.get(basePath + launcherEndpoint);
-        getElement(generateButton).click();
-        getElement(downloadButton).click();
+        LauncherPage launcherPage = new LauncherPage(driver);
+        launcherPage.downloadLauncher();
+        System.out.println("Launcher downloaded!");
+        Thread.sleep(10000);
     }
+
+    @Test
+    @Order(6)
+    public  void transferFileTest () throws IOException, InterruptedException {
+        AppEntryPoint.transferFile(responseLauncher.getLauncherString());
+        Thread.sleep(10000);
+        System.out.println("File transferred!");
+    }
+
+    @Test
+    @Order(7)
+    public  void execLauncherFileTest () throws JSchException, InterruptedException {
+        RunCommand.runCommand("C:\\test\\files\\GruntHTTP.exe", false);
+        Thread.sleep(10000);
+        System.out.println("File executed!");
+    }
+    @Test
+    @Order(8)
+    public  void verifyConnectionTest () throws InterruptedException, JSchException {
+        ResponseGruntItem[] responseGruntItems = CreateRequest.get200(responseLogin.getCovenantToken());
+        Boolean gruntConnected = false;
+        Integer count = 0;
+        do {
+            for (ResponseGruntItem responseGruntItem: responseGruntItems) {
+                if (responseGruntItem.getListenerId() == responseHttpListener.getId() &&
+                        responseGruntItem.getUserName().equals("remote") && responseGruntItem.getStatus().equals("active"))
+                {
+                    System.out.println("Connection successful!");
+                    gruntConnected = true;
+                }
+            }
+            count++;
+            RunCommand.runCommand("C:\\test\\files\\GruntHTTP.exe", false);
+        }
+        while (!gruntConnected || count!=3);
+    }
+
+    @Test
+    @Order(9)
+    public  void taskKillLauncherFileTest () throws JSchException {
+        RunCommand.runCommand("taskkill /IM GruntHTTP.exe /F");
+        System.out.println("Processed killed!");
+    }
+
+    @Test
+    @Order(10)
+    public  void deleteListenerTest ()  {
+        CreateRequest.deleteListener204(
+                responseHttpListener.getId(),
+                responseLogin.getCovenantToken());
+        System.out.println("Listener deleted!");
+    }
+
+    @Test
+    @Order(11)
+    public  void deleteUserTest ()  {
+        CreateRequest.deleteUser204(
+                responseUsers.getId(),
+                adminToken);
+        System.out.println("User deleted!");
+    }
+
 
     @AfterAll
     public void driverClose ()
     {
+        File file = new File("src/test/resources/GruntHTTP.exe");
+        if(file.delete())
+            System.out.println("GruntHTTP.exe deleted");
+        else
+            System.out.println("GruntHTTP.exe not deleted!");
+
         driver.close();
     }
 }
