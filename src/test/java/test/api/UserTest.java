@@ -104,15 +104,23 @@ public class UserTest extends TestHelper implements ConfigurationManager {
     }
     @Test
     @Order(7)
-    public  void verifyConnectionTest () throws InterruptedException {
+    public  void verifyConnectionTest () throws InterruptedException, JSchException {
         ResponseGruntItem[] responseGruntItems = CreateRequest.get200(responseLogin.getCovenantToken());
-        for (ResponseGruntItem responseGruntItem: responseGruntItems) {
-            if (responseGruntItem.getListenerId() == responseHttpListener.getId() &&
-            responseGruntItem.getUserName().equals("remote") && responseGruntItem.getStatus().equals("active"))
-            {
-                System.out.println("Connection successful!");
+        Boolean gruntConnected = false;
+        Integer count = 0;
+        do {
+            for (ResponseGruntItem responseGruntItem: responseGruntItems) {
+                if (responseGruntItem.getListenerId() == responseHttpListener.getId() &&
+                        responseGruntItem.getUserName().equals("remote") && responseGruntItem.getStatus().equals("active"))
+                {
+                    System.out.println("Connection successful!");
+                    gruntConnected = true;
+                }
             }
+            count++;
+            RunCommand.runCommand("C:\\test\\files\\GruntHTTP.exe", false);
         }
+        while (!gruntConnected || count!=3);
     }
 
     @Test
