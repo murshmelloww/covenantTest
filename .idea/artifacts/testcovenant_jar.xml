@@ -1,0 +1,12 @@
+<component name="ArtifactManager">
+  <artifact name="testcovenant:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/testcovenant_jar</output-path>
+    <root id="root">
+      <element id="archive" name="testcovenant.jar">
+        <element id="directory" name="META-INF">
+          <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

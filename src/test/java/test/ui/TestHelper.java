@@ -45,12 +45,14 @@ public abstract class TestHelper {
 
     protected WebDriver configureDriver (WebDriver driver)
     {
+
         System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
         ChromeOptions chromeOptions = new ChromeOptions();
         HashMap<String, Object> chromePrefs = new HashMap<String, Object>();
         chromePrefs.put("profile.default_content_settings.popups", 0);
         String downloadDir = System.getProperty("user.dir") + "\\src\\test\\resources";
         chromePrefs.put("download.default_directory", downloadDir);
+        chromePrefs.put("basePath", "http://host.docker.internal");
         chromePrefs.put("download.prompt_for_download", false);
         chromePrefs.put("safebrowsing.enabled", true);
         chromeOptions.setExperimentalOption("prefs", chromePrefs);
@@ -58,6 +60,7 @@ public abstract class TestHelper {
         chromeOptions.addArguments("--safebrowsing-disable-download-protection");
         chromeOptions.addArguments("safebrowsing-disable-extension-blacklist");
         driver = new ChromeDriver(chromeOptions);
+
         return driver;
     }
 

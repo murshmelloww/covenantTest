@@ -160,6 +160,6 @@ public class FrontTest extends TestHelper implements ConfigurationManager {
         else
             System.out.println("GruntHTTP.exe not deleted!");
 
-        driver.close();
+        //driver.close();
     }
 }

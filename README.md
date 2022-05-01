@@ -6,7 +6,12 @@
 
 #### 2) Create user admin with password 123
 
+#### 4) Run selenium docker
+    docker run -d -p 4444:4444 --shm-size="2g" selenium/standalone-chrome:4.1.4-20220427
+
 #### 3) Run test pipeline.
+
+
 
 ## Technologies:
 * Create Java project with Gradlew
@@ -49,6 +54,4 @@
 * deleteListenerTest - Delete created listener
 * deleteUserTest - delete created user
 * driverClose
-
-        This test will work on Windows system only. It depeneds from Chrom driver version.
-        Im not sure that it will work on remote server, because chrome driver download file on local directory. 
+ 
