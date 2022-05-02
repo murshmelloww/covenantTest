@@ -22,7 +22,7 @@
 ## Workflow:
 * I realised package config for connecting to Covenant
 * I realised package model for verifying response and creating request body
-* I modified some code example for working with jcraft from stack overflow and create package/ssh
+* I modified some code example for working with jcraft from stack overflow and create package ssh
 
 ## API test is in UserTest class:
 * createUser - login with admin and create new user
